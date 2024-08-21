@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import StoryModel from '@/models/Story';
+import { StoryModel } from '@/models'
 import { storySchema } from '@/utils/validation';
 
 class StoryController {
@@ -64,6 +64,9 @@ class StoryController {
             }
 
             const story = await this.storyModel.updateStory(Number(req.params.id), parsedBody);
+            if(!story){
+                res.status(404).json({error:false, message:'Story Not Found'});
+            }
             res.status(200).json({error: false, data: story});
         } catch (error) {
             console.log(error);
