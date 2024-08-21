@@ -39,7 +39,7 @@ router.post('/:story_id', wrapWithErrorHandling(async(req, res) => {
     await chapterController.createChapter(req, res);
 }))
 
-router.put('/:story_id/:id', wrapWithErrorHandling(async(req, res) => {
+router.put('/:story_id/chapter/:id', wrapWithErrorHandling(async(req, res) => {
     await chapterController.updateChapter(req, res);
 }))
 

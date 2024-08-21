@@ -21,7 +21,7 @@ async function fetchApi(
   
       console.log(options);
   
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api${url}`, options);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}${url}`, options);
       console.log(`API Response [${method} ${url}]:`, response);
       const data = await response.json();
   
