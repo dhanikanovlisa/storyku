@@ -57,15 +57,7 @@ class ChapterController {
 
     async updateChapter(req: Request, res: Response){
         try {
-            const parsedBody = chapterSchemea.safeParse(req.body);
-            if (!parsedBody.success) {
-                return res.status(422).json({
-                    error: true,
-                    message: 'Validation failed',
-                    errors: parsedBody.error.flatten(),
-                });
-            }
-            const chapter = await this.chapterModel.updateChapter(Number(req.params.story_id), Number(req.params.id), parsedBody.data);
+            const chapter = await this.chapterModel.updateChapter(Number(req.params.story_id), Number(req.params.id), req.body);
             if(!chapter){
                 res.status(404).json({error:false, message:'Chapter Not Found'});
             }

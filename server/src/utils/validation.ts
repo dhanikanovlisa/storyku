@@ -6,7 +6,7 @@ export const storySchema = z.object({
     category: z.string().min(1, "Category is required"),
     status: z.enum(['Draft', 'Publish']),
     cover: z.string().url("Cover must be a valid URL").optional(),
-    keyword: z.array(z.string()).optional(),
+    keyword: z.string().optional(),
 });
 
 export const chapterSchemea = z.object({
