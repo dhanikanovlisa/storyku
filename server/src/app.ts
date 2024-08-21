@@ -1,6 +1,6 @@
 import 'module-alias/register';
 import express from 'express';
-import api from './api'
+import router from './routes/route';
 
 var cors = require('cors');
 const app = express();
@@ -13,6 +13,6 @@ app.get('/', (_, res) => {
   res.send('Welcome to the story app');
 });
 
-app.use('/api/v1/stories', api);
+app.use('/stories', router);
 
 export default app;
