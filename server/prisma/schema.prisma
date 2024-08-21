@@ -19,7 +19,7 @@ model Stories {
   title     String
   author    String
   synopsis  String
-  caterogy  String
+  category  String
   status    String
   cover     String
   keyword   String
