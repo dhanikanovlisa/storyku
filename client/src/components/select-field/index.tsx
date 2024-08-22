@@ -35,7 +35,7 @@ const SelectField = ({ items, value, placeholder, onValueChange, label, required
         <SelectContent>
           {items &&
             items.map((item: any) => (
-              <SelectItem key={item.id} value={item.id.toString()}>
+              <SelectItem key={item.id} value={item.value.toString()}>
                 {item.name}
               </SelectItem>
             ))}

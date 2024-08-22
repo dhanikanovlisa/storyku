@@ -1,5 +1,6 @@
 import { storyProps, fetchStories, fetchStoryById, createStory, updateStory, deleteStory } from "./story";
 import { chapterProps, fetchChapters, fetchChapterById, createChapter, updateChapter, deleteChapter } from "./chapter";
+import { categoriesList, statusList } from "./dropdown";
 export {
     fetchStories,
     fetchStoryById,
@@ -11,6 +12,8 @@ export {
     createChapter,
     updateChapter,
     deleteChapter,
+    categoriesList,
+    statusList,
     
 }
 

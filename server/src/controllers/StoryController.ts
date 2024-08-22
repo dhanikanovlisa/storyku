@@ -1,19 +1,24 @@
 import { Request, Response } from 'express';
-import { StoryModel } from '@/models'
+import { ChapterModel, StoryModel } from '@/models'
 import { storySchema } from '@/utils/validation';
 
 class StoryController {
     private storyModel: StoryModel;
+    private chapterModel: ChapterModel;
 
     constructor(){
         this.storyModel = new StoryModel();
+        this.chapterModel = new ChapterModel();
     }
 
     async getStories(req:Request, res:Response){
         try {
             const page = Number(req.query.page) || 1;
             const pageSize = Number(req.query.pageSize) || 10; 
-            const stories = await this.storyModel.getStories(Number(page), Number(pageSize));
+            const search = req.query.search?.toString();
+            const category = req.query.category?.toString();
+            const status = req.query.status?.toString();
+            const stories = await this.storyModel.getStories(Number(page), Number(pageSize), {title: search, author:search, category:category, status:status});
             res.status(200).json(stories);
         } catch (error) {
             console.log(error);
@@ -74,6 +79,7 @@ class StoryController {
             if (!story) {
                 return res.status(404).json({error: true, message: 'Story not found'});
             }
+            await this.chapterModel.deleteChapters(Number(req.params.id))
             await this.storyModel.deleteStory(Number(req.params.id));
             res.status(204).json({error: false, message: 'Story deleted successfully', date:story});
         } catch (error) {

@@ -43,7 +43,7 @@ router.put('/:story_id/chapter/:id', wrapWithErrorHandling(async(req, res) => {
     await chapterController.updateChapter(req, res);
 }))
 
-router.delete('/story_id/chapter/:id', wrapWithErrorHandling(async(req, res) => {
+router.delete('/:story_id/chapter/:id', wrapWithErrorHandling(async(req, res) => {
     await chapterController.deleteChapter(req, res);
 }))
 

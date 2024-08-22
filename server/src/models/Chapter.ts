@@ -47,9 +47,9 @@ class ChapterModel {
     async createChapter(story_id:number, chapter: any){
         return prisma.chapters.create({
             data: {
-                title: chapter.title,  // Title of the chapter
-                story: chapter.story,  // Story content, typically HTML or text
-                storyId: story_id,     // Foreign key linking to the story
+                title: chapter.title,  
+                story: chapter.story,  
+                storyId: story_id,     
             },
         });
     }
@@ -61,6 +61,14 @@ class ChapterModel {
                 id: id
             },
             data
+        });
+    }
+
+    async deleteChapters(story_id:number){
+        return prisma.chapters.deleteMany({
+            where: {
+                storyId: story_id
+            }
         });
     }
 

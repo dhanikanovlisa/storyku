@@ -34,7 +34,7 @@ export const columns: ColumnDef<storyProps>[] = [
     id: "actions",
     cell: ({ row }) => {
       const story = row.original
- 
+      
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -44,17 +44,19 @@ export const columns: ColumnDef<storyProps>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
              onClick={() => {
                console.log(story.id)
              }}
             >
-              Copy payment ID
+              View Story
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
+            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuItem>Edit Story</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => {
+              
+            }}>Delete Story</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )

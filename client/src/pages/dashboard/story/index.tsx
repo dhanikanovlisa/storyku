@@ -9,14 +9,12 @@ import {
 } from "@/components";
 import { useStory } from "@/viewmodel";
 import { Filter, Plus } from "lucide-react";
-import { columns } from "./columns";
 import SelectField from "@/components/select-field";
-
+import { useNavigate } from "react-router-dom";
+import { categoriesList, statusList } from "@/models";
 export default function StoryManagementPage() {
   const {
-    categories,
     meta,
-    statusList,
     category,
     status,
     stories,
@@ -31,7 +29,11 @@ export default function StoryManagementPage() {
     setPage,
     handlePrev,
     handleNext,
+    columns,
+    // handleSearch,
+    getStories,
   } = useStory();
+  const navigate = useNavigate();
   return (
     <main className="flex h-full">
       <SideBar />
@@ -69,7 +71,7 @@ export default function StoryManagementPage() {
             >
               <div className="flex flex-col gap-2 items-center align-middle justify-center">
                 <SelectField
-                  items={categories || []}
+                  items={categoriesList || []}
                   value={category}
                   label="Category"
                   onValueChange={handleCategoryChange}
@@ -89,7 +91,10 @@ export default function StoryManagementPage() {
                 <Button
                   variant="outline"
                   className="rounded-full"
-                  onClick={handleReset}
+                  onClick={() => {
+                    handleCloseFilterDialog();
+                    handleReset();
+                  }}
                 >
                   Reset
                 </Button>
@@ -101,7 +106,10 @@ export default function StoryManagementPage() {
                   >
                     Cancel
                   </Button>
-                  <Button variant="orange" className="rounded-full">
+                  <Button variant="orange" className="rounded-full" onClick={() => {
+                    handleCloseFilterDialog();
+                    getStories();
+                  }}>
                     Filter
                   </Button>
                 </div>
@@ -109,7 +117,14 @@ export default function StoryManagementPage() {
             </DialogModal>
             <Button variant="orange" className="rounded-full">
               <Plus size={24} />
-              <span className="ml-2 text-white">Add Story</span>
+              <span
+                className="ml-2 text-white"
+                onClick={() => {
+                  navigate("/dashboard/story/create");
+                }}
+              >
+                Add Story
+              </span>
             </Button>
           </div>
         </div>
@@ -129,14 +144,14 @@ export default function StoryManagementPage() {
               </p>
             </div>
             <div>
-            <PaginationComponent
-              page={meta.page}
-              length={meta.last_page}
-              last_page={meta.last_page}
-              setPage={setPage}
-              handlePrev={handlePrev}
-              handleNext={handleNext}
-            />
+              <PaginationComponent
+                page={meta.page}
+                length={meta.last_page}
+                last_page={meta.last_page}
+                setPage={setPage}
+                handlePrev={handlePrev}
+                handleNext={handleNext}
+              />
             </div>
           </div>
         </div>

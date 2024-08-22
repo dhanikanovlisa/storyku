@@ -1,5 +1,8 @@
-import useStory from "./story";
-
+import useStory from "./story/StoryManagement";
+import useCreateStory from "./story/CreateStory";
+import useEditStory from "./story/EditStory";
 export {
-    useStory
+    useStory,
+    useCreateStory,
+    useEditStory,
 }
