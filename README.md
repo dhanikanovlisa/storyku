@@ -1,10 +1,10 @@
-# Project Name
-
-A brief description of your project, summarizing its purpose and functionality.
+# Storyku
 
 ## <a name="introduction"></a> Introduction :
 
-This project is designed to manage stories and their chapters. It includes both client-side and server-side functionalities, allowing users to create, edit, and manage stories as well as chapters associated with those stories.
+This project reflects on storing stories and chapters. Unfortunately, I didn't use my time enough to create the front-end. 
+So enjoy this half broken app because you cant really access it from the client side. The server side works fine tho.
+
 
 ## Table of Contents
 
@@ -237,3 +237,4 @@ This project utilizes several libraries for both the client-side and server-side
 
 ## <a name="apk-link"></a> Website URL :
 Attach the link of your deployed project or youtube link here
+https://youtu.be/1PDaKmnGygE
