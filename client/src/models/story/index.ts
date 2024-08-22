@@ -9,8 +9,8 @@ export type storyProps = {
     status?: string,
     cover?: string,
     keyword?: string,
-    created_at: string,
-    updated_at: string
+    created_at?: string,
+    updated_at?: string
 }
 
 export const fetchStories = async (page = 1, pageSize = 10) => {

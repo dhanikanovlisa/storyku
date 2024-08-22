@@ -35,7 +35,7 @@ router.get('/:story_id/chapter/:id', wrapWithErrorHandling(async(req, res) => {
     await chapterController.getChapterById(req, res);
 }))
 
-router.post('/:story_id', wrapWithErrorHandling(async(req, res) => {
+router.post('/:story_id/chapter', wrapWithErrorHandling(async(req, res) => {
     await chapterController.createChapter(req, res);
 }))
 

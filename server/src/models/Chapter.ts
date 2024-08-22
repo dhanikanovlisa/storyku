@@ -44,12 +44,13 @@ class ChapterModel {
         });
     }
 
-    async createChapter(story_id:string, data: any){
+    async createChapter(story_id:number, chapter: any){
         return prisma.chapters.create({
             data: {
-                ...data,
-                storyId: story_id
-            }
+                title: chapter.title,  // Title of the chapter
+                story: chapter.story,  // Story content, typically HTML or text
+                storyId: story_id,     // Foreign key linking to the story
+            },
         });
     }
 

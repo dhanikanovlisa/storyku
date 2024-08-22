@@ -31,6 +31,9 @@ class StoryModel {
         return prisma.stories.findUnique({
             where: {
                 id: id
+            },
+            include:{
+                Chapters: true
             }
         })
     }

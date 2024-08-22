@@ -1,15 +1,19 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { DashboardPage, StoryManagementPage, NotFoundPage } from './pages';
-
+import { CreateChapterPage, CreateStoryPage, DashboardPage, StoryManagementPage, NotFoundPage } from './pages';
+import { Toaster } from './components';
 function App() {
 
   return (
     <>
+      <Toaster />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<DashboardPage />} />
-          <Route path="/dashboard/story" element={<StoryManagementPage/>} />
+          <Route path="/dashboard/story" element={<StoryManagementPage/>}>
+          </Route>
+          <Route path="/dashboard/story/create" element={<CreateStoryPage/>} />
+          <Route path="/dashboard/story/chapter/create" element={<CreateChapterPage/>} />
           <Route path="*" element={<NotFoundPage/>} />
         </Routes>
       </BrowserRouter>

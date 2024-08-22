@@ -41,10 +41,11 @@ class ChapterController {
                 return res.status(422).json({
                     error: true,
                     message: 'Validation failed',
-                    errors: parsedBody.error.flatten(),
+                    errors: parsedBody.error.flatten().fieldErrors,
                 });
             }
-            const chapter = await this.chapterModel.createChapter(req.params.story_id, parsedBody);
+            console.log(parsedBody);
+            const chapter = await this.chapterModel.createChapter(Number(req.params.story_id), parsedBody.data);
             if(!chapter){
                 res.status(404).json({error:false, message:'Chapter Not Found'});
             }
@@ -57,7 +58,15 @@ class ChapterController {
 
     async updateChapter(req: Request, res: Response){
         try {
-            const chapter = await this.chapterModel.updateChapter(Number(req.params.story_id), Number(req.params.id), req.body);
+            const parsedBody = chapterSchemea.safeParse(req.body);
+            if (!parsedBody.success) {
+                return res.status(422).json({
+                    error: true,
+                    message: 'Validation failed',
+                    errors: parsedBody.error.flatten().fieldErrors,
+                });
+            }
+            const chapter = await this.chapterModel.updateChapter(Number(req.params.story_id), Number(req.params.id), parsedBody.data);
             if(!chapter){
                 res.status(404).json({error:false, message:'Chapter Not Found'});
             }

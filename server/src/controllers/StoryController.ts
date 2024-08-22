@@ -42,7 +42,7 @@ class StoryController {
                 return res.status(422).json({
                     error: true,
                     message: 'Validation failed',
-                    errors: parsedBody.error.issues,
+                    errors: parsedBody.error.flatten().fieldErrors,
                 });
             }
     

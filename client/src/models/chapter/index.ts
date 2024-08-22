@@ -4,7 +4,7 @@ export type chapterProps = {
     id: number,
     title: string,
     story?: string,
-    story_id:string,
+    story_id?:string,
 }
 
 export const fetchChapters = async (story_id:number, page = 1, pageSize = 10) => {
@@ -18,7 +18,7 @@ export const fetchChapterById = async (story_id:number, id: number, additionalHe
 }
 
 export const createChapter = async (story_id:number, additionalHeaders: Record<string,string>, payload:chapterProps) => {
-    const res = await POST(`/stories/${story_id}`, additionalHeaders, payload);
+    const res = await POST(`/stories/${story_id}/chapter`, additionalHeaders, payload);
     return res;
 }
 
